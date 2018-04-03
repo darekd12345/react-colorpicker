@@ -1,0 +1,41 @@
+.button {
+  clear: right;
+  font-weight: 300;
+  float: left;
+  padding: 0 15px;
+  line-height: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  padding-right: 11px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  letter-spacing: 4px;
+  font-size: 11px;
+  transition: all 0.5s;
+  margin: 5px 10px;
+  user-select: none;
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: white;
+    color: hsl(235, 37%, 51%);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(1.15);
+    opacity: 0.8;
+    transition: all 0.1s;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+  }
+
+  &.button-inversed {
+    color: hsl(235, 37%, 51%);
+    
+    &:hover {
+      color: white;
+      background: linear-gradient(to right, hsl(264, 35%, 58%), hsl(235, 37%, 51%));
+    }
+  }
+}
