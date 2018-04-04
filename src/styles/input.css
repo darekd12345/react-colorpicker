@@ -1,0 +1,35 @@
+label {
+    color: hsl(235, 37%, 51%);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.input-container {
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+    clear: right;
+    float: left;
+    width: 140px;
+}
+
+input {
+    color: rgb(100, 100, 100);
+    letter-spacing: 2px;
+    margin: 4px 12px;
+    border: 1px solid rgb(211, 209, 209);
+    border-radius: 20px;
+    height: 25px;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: 300;
+
+    &:focus {
+      outline: none;
+      color: hsl(235, 37%, 51%);
+      transform: scale(1.05);
+      transition: all 0.2s;
+      border: 1px solid rgb(240, 240, 240);
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    }
+}

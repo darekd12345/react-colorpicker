@@ -1,8 +1,10 @@
 import React from "react";
 
 import colorpicker from "../styles/colorpicker.css";
+import input from "../styles/input.css";
 
 import Button from "./button";
+
 
 const Slider = (props) => {
     return (
@@ -11,6 +13,17 @@ const Slider = (props) => {
         </div>
     );
   };
+
+const ColorInput = (props) => {
+    return (
+        <div className="colorinput">
+            <label>
+                {props.name}:
+                <input type="text" value="255, 255, 255" name={props.name} />
+            </label>
+        </div>
+    )
+}
 
 class ColorPicker extends React.Component {
     constructor(props) {
@@ -29,6 +42,12 @@ class ColorPicker extends React.Component {
                     <div className="dot" onDrag={this.handleDrag} />
                 </div>
                 <Slider handleDrag={this.handleDrag} />
+                <div className="input-container">
+                    <ColorInput name="RGB" />
+                    <ColorInput name="HSL" />
+                    <ColorInput name="HEX" />
+                    <Button text="Copy" />
+                </div>
                 <div className="button-container">
                     <Button text="Select" />
                     <Button text="Cancel" />
