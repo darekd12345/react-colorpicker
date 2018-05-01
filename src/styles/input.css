@@ -7,29 +7,32 @@ label {
 .input-container {
     margin-left: 10px;
     margin-top: 10px;
-    position: relative;
-    clear: right;
-    float: left;
     width: 140px;
+    display: flex;
+    flex-direction: column;
 }
 
 input {
+    background: none;
     color: rgb(100, 100, 100);
     letter-spacing: 2px;
-    margin: 4px 12px;
-    border: 1px solid rgb(211, 209, 209);
-    border-radius: 20px;
+    margin: 10px 12px;
+    border: 1px solid hsl(235, 37%, 51%);
+    border-color: transparent transparent rgb(220, 220, 220) transparent;
     height: 25px;
     text-align: center;
-    transition: all 0.3s;
+    transition: border 0.4s;
+    font-weight: 400;
+    width: 120px;
     font-weight: 300;
+    margin-top: 0px;
 
     &:focus {
       outline: none;
+      font-weight: 400;
+      letter-spacing: 1.9px;
       color: hsl(235, 37%, 51%);
-      transform: scale(1.05);
-      transition: all 0.2s;
-      border: 1px solid rgb(240, 240, 240);
-      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      transition: border 0.3s;
+      border-bottom: 1px solid hsl(235, 37%, 51%);
     }
 }
