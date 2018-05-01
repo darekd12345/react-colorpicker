@@ -20,38 +20,6 @@ export default class Converter {
         if (isNaN(hsl.s)) hsl.s = 0;
         return hsl;
     }
-
-    rgbToHsl(color) {
-        let colors = color.replace(/\s/g, '').split(",");
-        var r = parseInt(colors[0], 10);
-        var g = parseInt(colors[1], 10);
-        var b = parseInt(colors[2], 10);
-        
-        r /= 255, g /= 255, b /= 255;
-        var max = Math.max(r, g, b), min = Math.min(r, g, b);
-        var h, s, l = (max + min) / 2;
-        
-        if (max == min) {
-            h = s = 0; // achromatic
-        } else {
-            var d = max - min;
-            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-            
-            switch (max) {
-                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                case g: h = (b - r) / d + 2; break;
-                case b: h = (r - g) / d + 4; break;
-            }
-            
-            h /= 6;
-            h *= 360;
-            h = Math.round(h)
-            s = Math.round(s * 100);
-            l = Math.round(l * 100);
-        }  
-        
-        return (h + ", " + s + ", " + l);
-    }
     
     hslToRgb(color){
         let colors = color.replace(/\s/g, '').split(",");
@@ -81,15 +49,7 @@ export default class Converter {
         
         return (Math.round(r * 255) + ", " + Math.round(g * 255) + ", " + Math.round(b * 255));
     }
-    
-    hexToRgb(color) {
-        let r = parseInt(color.slice(1, 3), 16);
-        let g = parseInt(color.slice(3, 5), 16);
-        let b = parseInt(color.slice(5), 16);
-        
-        return(r+ ", " + g + ", " + b);
-    }
-    
+
     rgbToHex(color) {
         var colors = color.replace(/\s/g, '').split(",");
         

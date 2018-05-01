@@ -21,11 +21,6 @@ class ColorPicker extends React.Component {
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-
-        this.handleHexChange = this.handleHexChange.bind(this);
-        this.handleHslChange = this.handleHslChange.bind(this);
-        this.handleRgbChange = this.handleRgbChange.bind(this);
 
         this.getRefs = this.getRefs.bind(this);
 
@@ -83,20 +78,14 @@ class ColorPicker extends React.Component {
         }
     }
 
-    handleClick(event) {
-        
+    componentDidMount() {
+        document.addEventListener("mousemove", this.handleMouseMove);
+        document.addEventListener("mouseup", this.handleMouseUp);
     }
 
-    handleHexChange(hex) {
-        //this.setState({rgbValue: hexToRgb(hex)});
-    }
-    
-    handleHslChange(hsl) {
-        //this.setState({rgbValue: hslToRgb(hsl)});
-    }
-    
-    handleRgbChange(rgb) {
-        this.setState({rgbValue: rgb});
+    componentWillUnmount() {
+        document.removeEventListener("mousemove");
+        document.removeEventListener("mouseup");
     }
 
     getRefs(ref) {
@@ -112,7 +101,7 @@ class ColorPicker extends React.Component {
 
         const hslVal = ColorConverter.hsvToHsl(hue, saturation, value);
         
-        const hsl = hue + ", " + Math.round(hslVal.s) + ", " + Math.round(hslVal.l);
+        const hsl = hue + ", " + Math.round(hslVal.s) + "%, " + Math.round(hslVal.l) + "%";
         const rgb = ColorConverter.hslToRgb(hsl);
         const hex = ColorConverter.rgbToHex(rgb);
 
@@ -121,8 +110,7 @@ class ColorPicker extends React.Component {
         }
 
         return (
-            <div className="colorpicker"
-                onMouseUp={this.handleMouseUp} onMouseMoveCapture={this.handleMouseMove}>
+            <div className="colorpicker">
                 <div className="content">
                     <Area handleClick={this.handleClick}
                         handleMouseDown={this.handleMouseDown}
@@ -134,13 +122,13 @@ class ColorPicker extends React.Component {
                     <Slider barY={this.state.barY}
                         handleMouseDown={this.handleMouseDown} />
                     <div className="input-container">
-                        <ColorInput name="RGB" color={rgb} onColorChange={this.handleRgbChange} />
-                        <ColorInput name="HSL" color={hsl} onColorChange={this.handleHslChange} />
-                        <ColorInput name="HEX" color={hex} onColorChange={this.handleHexChange} />
+                        <ColorInput name="RGB" color={rgb} />
+                        <ColorInput name="HSL" color={hsl} />
+                        <ColorInput name="HEX" color={hex} />
+                        <div className="current-color-dot" style={currentColorStyle} />
                     </div>
                 </div>
                 <div className="footer">
-                    <div className="current-color-dot" style={currentColorStyle} />
                 </div>
             </div>
         );

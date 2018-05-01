@@ -5,8 +5,6 @@ label {
 }
 
 .input-container {
-    margin-left: 10px;
-    margin-top: 10px;
     width: 140px;
     display: flex;
     flex-direction: column;
@@ -19,7 +17,7 @@ input {
     margin: 10px 12px;
     border: 1px solid hsl(235, 37%, 51%);
     border-color: transparent transparent rgb(220, 220, 220) transparent;
-    height: 25px;
+    height: 22px;
     text-align: center;
     transition: border 0.4s;
     font-weight: 400;

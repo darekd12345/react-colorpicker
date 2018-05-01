@@ -3,11 +3,12 @@ import React from "react";
 class ColorInput extends React.Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleChange(e) {
-        this.props.onColorChange(e.target.value);
+    handleClick(event) {
+        event.target.select();
+        document.execCommand("Copy");
     }
 
     render() {
@@ -16,7 +17,12 @@ class ColorInput extends React.Component {
                 <label>
                     {this.props.name}
                 </label>
-                <input type="text" value={this.props.color} onChange={this.handleChange} />
+                <input 
+                    readOnly
+                    type="text"
+                    onClick={this.handleClick} 
+                    value={this.props.color} 
+                />
             </div>
         )
     }
