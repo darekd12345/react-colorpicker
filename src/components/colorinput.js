@@ -9,6 +9,9 @@ class ColorInput extends React.Component {
     handleClick(event) {
         event.target.select();
         document.execCommand("Copy");
+        if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        }
     }
 
     render() {

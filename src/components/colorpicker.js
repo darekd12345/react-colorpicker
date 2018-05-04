@@ -10,10 +10,9 @@ import ColorInput from "./colorinput";
 import Area from "./colorarea";
 import Slider from "./slider";
 
-import Converter from "./converter";
+import {hsvToHsl, hslToRgb, rgbToHex} from "./converter";
 
 const areaSize = 200;
-let ColorConverter = new Converter();
 
 class ColorPicker extends React.Component {
     constructor(props) {
@@ -98,15 +97,13 @@ class ColorPicker extends React.Component {
         const hue = Math.round(this.state.barY * 3.6 / 2);
         const saturation = Math.round(this.state.dotX / 2);
         const value = 100 - Math.round(this.state.dotY / 2);
-
-        const hslVal = ColorConverter.hsvToHsl(hue, saturation, value);
         
-        const hsl = hue + ", " + Math.round(hslVal.s) + "%, " + Math.round(hslVal.l) + "%";
-        const rgb = ColorConverter.hslToRgb(hsl);
-        const hex = ColorConverter.rgbToHex(rgb);
+        const hsl = hsvToHsl(hue, saturation, value);
+        const rgb = hslToRgb(hsl);
+        const hex = rgbToHex(rgb);
 
         const currentColorStyle = {
-            backgroundColor: "hsl(" + hue + ", " + hslVal.s + "%, " + hslVal.l + "%)"
+            backgroundColor: "hsl(" + hsl + ")"
         }
 
         return (
